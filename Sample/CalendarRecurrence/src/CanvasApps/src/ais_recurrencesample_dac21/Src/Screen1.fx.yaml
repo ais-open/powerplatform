@@ -1,0 +1,18 @@
+Screen1 As screen:
+    Fill: =Color.White
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    RecurrenceControl_1 As RecurrenceControl:
+        X: =78
+        Y: =81
+
+    rrulepcf1 As rRule:
+        DisplayMode: =DisplayMode.Edit
+        freq: ="Daily"
+        Height: =449
+        interval: =1
+        Width: =484
+        X: =804
+        Y: =132
+        ZIndex: =2
+

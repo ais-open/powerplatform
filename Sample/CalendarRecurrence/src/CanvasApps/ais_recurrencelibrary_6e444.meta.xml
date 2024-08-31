@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Name>ais_recurrencelibrary_6e444</Name>
-  <AppVersion>2024-08-31T20:45:18Z</AppVersion>
+  <AppVersion>2024-08-31T21:29:59Z</AppVersion>
   <Status>Ready</Status>
   <CreatedByClientVersion>3.24084.20.0</CreatedByClientVersion>
   <MinClientVersion>3.24084.20.0</MinClientVersion>
@@ -10,13 +10,13 @@
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>RGBA(251,101,60,1)</BackgroundColor>
   <DisplayName>Recurrence Library</DisplayName>
-  <Description xsi:nil="true"></Description>
-  <CommitMessage xsi:nil="true"></CommitMessage>
-  <Publisher xsi:nil="true"></Publisher>
+  <Description></Description>
+  <CommitMessage></CommitMessage>
+  <Publisher></Publisher>
   <AuthorizationReferences>[]</AuthorizationReferences>
   <ConnectionReferences>{}</ConnectionReferences>
   <DatabaseReferences>{}</DatabaseReferences>
-  <AppComponents>[{"appComponentName":"8a336e63109141eaaad91312fc81d6bf","displayName":"RecurrenceControl","description":"Use to create recurring events.","appName":"8301cbe8-726f-44ba-b3fb-6bc25436d86a","appVersion":"2024-08-31T20:45:18Z","appComponentLibraryLogicalName":"ais_recurrencelibrary_6e444","appDisplayName":"Recurrence Library","environmentName":"430e2583-5d40-e2a6-9d19-208d1a2cc912","owner":{"id":"ef479f94-670d-4a77-8a35-ff25a7085eaa","displayName":"Nick Gill","email":"nickjgill@gilldev.onmicrosoft.com","type":"User","tenantId":"147f2731-6114-4056-98ab-cb5d6ac9f45f","userPrincipalName":"nickjgill@gilldev.onmicrosoft.com"},"allowCustomization":true,"createdOn":"2024-08-31T19:03:52.281Z","lastModifiedOn":"2024-08-31T20:44:44.059Z","connectionReferences":{},"databaseReferences":{}}]</AppComponents>
+  <AppComponents>[{"appComponentName":"8a336e63109141eaaad91312fc81d6bf","displayName":"RecurrenceControl","description":"Use to create recurring events.","appVersion":"2024-08-31T20:45:18Z","appComponentLibraryLogicalName":"ais_recurrencelibrary_6e444","environmentName":"430e2583-5d40-e2a6-9d19-208d1a2cc912","allowCustomization":true,"createdOn":"2024-08-31T19:03:52.281Z","lastModifiedOn":"2024-08-31T20:44:44.059Z","connectionReferences":{},"databaseReferences":{}}]</AppComponents>
   <AppComponentDependencies>[]</AppComponentDependencies>
   <CanConsumeAppPass>1</CanConsumeAppPass>
   <CanvasAppType>1</CanvasAppType>

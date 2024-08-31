@@ -13,7 +13,9 @@
       <LocalizedNames>
         <LocalizedName description="Applied Information Sciences" languagecode="1033" />
       </LocalizedNames>
-      <Descriptions />
+      <Descriptions>
+        <Description description="appliedinformationsciences" languagecode="1033" />
+      </Descriptions>
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <CustomizationPrefix>ais</CustomizationPrefix>
@@ -79,6 +81,8 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="300" schemaName="ais_recurrencelibrary_6e444" behavior="0" />
+      <RootComponent type="300" schemaName="ais_recurrencesample_dac21" behavior="0" />
+      <RootComponent type="66" schemaName="ais_simon.rrulepcf" behavior="0" />
     </RootComponents>
     <MissingDependencies />
   </SolutionManifest>
