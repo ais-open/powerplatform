@@ -1,35 +1,30 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="simon" constructor="rrulepcf" version="1.1.0" display-name-key="rRule" description-key="Generates recurring dates" control-type="standard" >
-
+  <control namespace="simon" constructor="rrulepcf" version="1.1.1" display-name-key="rRule" description-key="Generates recurring dates" control-type="standard">
     <external-service-usage enabled="false">
     </external-service-usage>
-    
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    
-    <property name = "stringDateOutput" display-name-key="Dates" description-key="The generated dates as a json string." of-type="SingleLine.Text" usage="output" required="false" />
-    <property name = "freq" display-name-key="Frequency" description-key="One of the following: Yearly, Monthly, Weekly, Daily." of-type="SingleLine.Text" usage="input" required="false" pfx-default-value='"Daily"'/> 
-    <property name = "rruleStringOutput" display-name-key="RRULE String" description-key="The generated rrule string." of-type="SingleLine.Text" usage="output" required="false" />  
-    <property name = "rruleTextOutput" display-name-key="RRULE Text Output" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="output" required="false" />
-    <property name = "interval" display-name-key="Interval" description-key="The interval between each freq iteration. For example, when using Yearly, an interval of 2 means once every two years, but with Hourly, it means once every two hours. The default interval is 1." of-type="Whole.None" usage="input" required="true" pfx-default-value="1" />
-    <property name = "count" display-name-key="Count" description-key="How many occurrences will be generated." of-type="Whole.None" usage="input" required="false"  />
-    <property name = "bySetPos" display-name-key="By Set Pos" description-key="Property_Desc_Key" of-type="Whole.None" usage="input" required="false" />
-    <property name = "startDate" display-name-key="Start Date" description-key="The recurrence start. Besides being the base for the recurrence, missing parameters in the final recurrence instances will also be extracted from this date." of-type="DateAndTime.DateAndTime" usage="input" required="true"/>
-    <property name = "endDate" display-name-key="End Date" description-key="The last date or until date" of-type="DateAndTime.DateAndTime" usage="input" required="false" />
-    <property name = 'byWeekDay' display-name-key='By Weekday Day' description-key='Property_Desc_Key' of-type='SingleLine.Text' usage='input' required='false' />
-    <property name = "byMonth" display-name-key="By Month" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
-    <property name = "byMonthDay" display-name-key="By Month Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
-    <property name = "byYearDay" display-name-key="By Year Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
-    <property name = "output" display-name-key="Dates" description-key="Property_Desc_Key" of-type="Object" usage="output" required="false" />
-    <property name = "outputSchema" display-name-key="datesSchema" of-type="SingleLine.Text" usage="bound" hidden="true"/>
-    <property name = "toggleDebugTable" display-name-key="Toggle Debug Table" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="false" />
+    <property name="stringDateOutput" display-name-key="Dates" description-key="The generated dates as a json string." of-type="SingleLine.Text" usage="output" required="false" />
+    <property name="freq" display-name-key="Frequency" description-key="One of the following: Yearly, Monthly, Weekly, Daily." of-type="SingleLine.Text" usage="input" required="false" pfx-default-value="&quot;Daily&quot;" />
+    <property name="rruleStringOutput" display-name-key="RRULE String" description-key="The generated rrule string." of-type="SingleLine.Text" usage="output" required="false" />
+    <property name="rruleTextOutput" display-name-key="RRULE Text Output" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="output" required="false" />
+    <property name="interval" display-name-key="Interval" description-key="The interval between each freq iteration. For example, when using Yearly, an interval of 2 means once every two years, but with Hourly, it means once every two hours. The default interval is 1." of-type="Whole.None" usage="input" required="true" pfx-default-value="1" />
+    <property name="count" display-name-key="Count" description-key="How many occurrences will be generated." of-type="Whole.None" usage="input" required="false" />
+    <property name="bySetPos" display-name-key="By Set Pos" description-key="Property_Desc_Key" of-type="Whole.None" usage="input" required="false" />
+    <property name="startDate" display-name-key="Start Date" description-key="The recurrence start. Besides being the base for the recurrence, missing parameters in the final recurrence instances will also be extracted from this date." of-type="DateAndTime.DateAndTime" usage="input" required="true" />
+    <property name="endDate" display-name-key="End Date" description-key="The last date or until date" of-type="DateAndTime.DateAndTime" usage="input" required="false" />
+    <property name="byWeekDay" display-name-key="By Weekday Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="byMonth" display-name-key="By Month" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="byMonthDay" display-name-key="By Month Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="byYearDay" display-name-key="By Year Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
+    <property name="output" display-name-key="Dates" description-key="Property_Desc_Key" of-type="Object" usage="output" required="false" />
+    <property name="outputSchema" display-name-key="datesSchema" of-type="SingleLine.Text" usage="bound" hidden="true" />
+    <property name="toggleDebugTable" display-name-key="Toggle Debug Table" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="false" />
     <property-dependencies>
       <property-dependency input="outputSchema" output="output" required-for="schema" />
     </property-dependencies>
-
-
     <resources>
-      <code path="index.ts" order="1"/>
+      <code path="index.ts" order="1" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/rrulepcf.css" order="1" />
       <resx path="strings/rrulepcf.1033.resx" version="1.0.0" />
