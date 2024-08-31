@@ -22,6 +22,7 @@
     <property name = "byYearDay" display-name-key="By Year Day" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="input" required="false" />
     <property name = "output" display-name-key="Dates" description-key="Property_Desc_Key" of-type="Object" usage="output" required="false" />
     <property name = "outputSchema" display-name-key="datesSchema" of-type="SingleLine.Text" usage="bound" hidden="true"/>
+    <property name = "toggleDebugTable" display-name-key="Toggle Debug Table" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="false" />
     <property-dependencies>
       <property-dependency input="outputSchema" output="output" required-for="schema" />
     </property-dependencies>

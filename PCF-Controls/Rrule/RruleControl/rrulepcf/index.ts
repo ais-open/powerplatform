@@ -26,6 +26,38 @@ interface RuleOptions {
     byeaster?: null
     }
 
+    class DateTableComponent {
+        private container: HTMLDivElement;
+    
+        constructor(container: HTMLDivElement) {
+            this.container = container;
+        }
+    
+        public renderDates(dates: Date[]) {
+            const table = this.createTable(dates);
+            this.container.innerHTML = ''; // Clear previous content
+            this.container.appendChild(table);
+        }
+    
+        private createTable(dates: Date[]): HTMLTableElement {
+            const table = document.createElement('table');
+            const header = table.createTHead();
+            const headerRow = header.insertRow();
+            const th = document.createElement('th');
+            th.innerText = 'Dates';
+            headerRow.appendChild(th);
+    
+            const tbody = table.createTBody();
+            dates.forEach(date => {
+                const row = tbody.insertRow();
+                const cell = row.insertCell();
+                cell.innerText = DateTime.fromJSDate(date).toISODate() ?? '';
+            });
+    
+            return table;
+        }
+    }
+    
 export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
     private _container: HTMLDivElement;
@@ -35,6 +67,7 @@ export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOu
     private _frequencyMapping: any;
     private notifyOutputChanged: () => void;
     private _outputSchema: any;
+    private dateTableComponent: DateTableComponent;
 
     public _debug: any;
     public ruleOptions: RuleOptions;
@@ -43,7 +76,8 @@ export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOu
      * Empty constructor.
      */
     constructor() {
-        
+        this._container = document.createElement('div');
+        this.dateTableComponent = new DateTableComponent(this._container);
         
     }
 
@@ -56,7 +90,6 @@ export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOu
      * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement): void {
-        this._container = document.createElement("div");
         container.appendChild(this._container);
         this.notifyOutputChanged = notifyOutputChanged;
         
@@ -74,7 +107,7 @@ export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOu
 
         this.notifyOutputChanged();
     }
-
+   
     /**
      * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
@@ -124,6 +157,14 @@ export class rrulepcf implements ComponentFramework.StandardControl<IInputs, IOu
                     if (oldRruleStringOutput != this._rruleStringOutput) {
                         this.notifyOutputChanged();
                     }
+        if(context.parameters.toggleDebugTable.raw) {
+            // Render the dates into a table
+            this.dateTableComponent.renderDates(this._dates);
+        }
+        else {
+            this._container.innerHTML = ''; // Clear the container if toggleDebugTable is false
+        }
+
             } catch (error) {
                 console.error('An error occurred:', error);
             }
