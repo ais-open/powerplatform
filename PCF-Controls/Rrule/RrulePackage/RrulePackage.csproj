@@ -16,4 +16,7 @@
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RruleSolution\solution.cdsproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
 </Project>
