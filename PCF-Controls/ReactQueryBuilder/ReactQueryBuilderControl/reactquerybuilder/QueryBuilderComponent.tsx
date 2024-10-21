@@ -24,11 +24,20 @@ const initialQueryDefault: RuleGroupType = {
 };
 
 export const QueryBuilderComponent: React.FC<AppProps> = ({ fields, onQueryChange, initialQuery, isReadOnly,reset }) => {
-  let initialQueryInput: any = initialQueryDefault;
-  if (initialQuery && !reset) {
+  /*let initialQueryInput: RuleGroupType = initialQueryDefault;
+  if (initialQuery ) {
     initialQueryInput = JSON.parse(initialQuery);
-  }
+  };*/
+  
+  let initialQueryInput: RuleGroupType;
 
+try {
+  initialQueryInput = initialQuery ? JSON.parse(initialQuery) : initialQueryDefault;
+} catch (error) {
+  console.error("Invalid JSON provided for initialQuery:", error);
+  initialQueryInput = initialQueryDefault;
+}
+ // let initialQueryInput = initialQuery ? JSON.parse(initialQuery) : initialQueryDefault;
 
   const [query, setQuery] = useState(initialQueryInput);
 

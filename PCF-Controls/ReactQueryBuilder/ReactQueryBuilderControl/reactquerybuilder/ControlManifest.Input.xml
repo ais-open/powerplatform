@@ -18,9 +18,9 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="initialQuery" display-name-key="Initial Query" description-key="The initial query in JSON format" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="fields" display-name-key="Fields" description-key="The fields configuration in JSON format" of-type="SingleLine.Text" usage="bound" required="false" />
+    
+    <property name="initialQuery" display-name-key="Initial Query" description-key="The initial query in JSON format" of-type="SingleLine.Text" usage="input" default-value="{}" required="false" />
+    
     <property name="isreadonly" display-name-key="IsReadOnly" description-key="Whether the control is to be readonly" of-type="TwoOptions" usage="bound" required="false" />
     <property name="reset" display-name-key="Reset" description-key="Whether the control is to be readonly" of-type="TwoOptions" usage="bound" required="false" />
     <!-- Outputs -->
