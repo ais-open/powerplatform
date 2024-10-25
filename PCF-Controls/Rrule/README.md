@@ -7,6 +7,10 @@ date: 7/01/2024
 
 This control enables the use of the rrule.js library inside of a Canvas app or Custom page. The control is not meant to render items in the UI; rather, it accepts inputs to produce a date/time series or an Rrule string. This simplifies the handling of recurrence rules for calendar dates.
 
+The following video provides a basic walkthrough of the PCF control:
+https://youtu.be/irVfGyw_-r8
+
+This control is based off the rrule.js library which can be found here:
 https://github.com/jkbrzt/rrule
 
 | Canvas apps | Custom pages | Model-driven apps | Portals |
