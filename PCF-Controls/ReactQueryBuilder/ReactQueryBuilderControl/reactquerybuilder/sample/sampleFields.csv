@@ -1,0 +1,4 @@
+﻿name,label,inputType
+firstName,First Name,text
+lastName,Last Name,text
+date,Date,date
