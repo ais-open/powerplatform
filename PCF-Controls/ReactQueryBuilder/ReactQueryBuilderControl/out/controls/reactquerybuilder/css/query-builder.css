@@ -1,0 +1,224 @@
+:root {
+    --background-color-1: rgba(242, 242, 242, 0.7);
+    --background-color-2: rgba(222, 222, 222, 0.7);
+    --background-color-3: rgba(202, 202, 202, 0.7);
+    --background-color-4: rgba(182, 182, 182, 0.7);
+    --background-color-5: rgba(162, 162, 162, 0.7);
+    /* Add more shades as needed */
+}
+.ruleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .5rem;
+    border-width: 1px
+}
+
+.ruleGroup .ruleGroup-body {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem
+}
+
+.ruleGroup .ruleGroup-body:empty {
+    display: none
+}
+
+.ruleGroup .ruleGroup-header,
+.ruleGroup .rule {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.ruleGroup .ruleGroup-header .ruleGroup-combinators {
+    width: 8%; /* Adjust the width as needed */
+}
+
+.ruleGroup-addRule .ruleGroup-addGroup{
+    justify-content: flex-end;
+}
+
+
+.ruleGroup .rule .rule-value:has(.rule-value-list-item) {
+    display: flex;
+    gap: .5rem;
+    align-items: baseline
+}
+
+.ruleGroup .betweenRules {
+    display: flex
+}
+
+.ruleGroup .shiftActions {
+    display: flex;
+    flex-direction: column
+}
+
+.ruleGroup .shiftActions>* {
+    padding: 0
+}
+
+.dndOver.rule,
+.dndOver.ruleGroup-header {
+    padding-bottom: .5rem
+}
+
+.dndOver.betweenRules {
+    padding-top: .5rem
+}
+
+.queryBuilder-branches .ruleGroup-body {
+    margin-left: calc(2*0.5rem)
+}
+
+.queryBuilder-branches .rule,
+.queryBuilder-branches .ruleGroup .ruleGroup {
+    position: relative
+}
+
+.queryBuilder-branches .rule::before,
+.queryBuilder-branches .rule::after,
+.queryBuilder-branches .ruleGroup .ruleGroup::before,
+.queryBuilder-branches .ruleGroup .ruleGroup::after {
+    content: "";
+    width: .5rem;
+    left: calc(-0.5rem - 1px);
+    border-radius: 0;
+    position: absolute
+}
+
+.queryBuilder-branches .rule::before,
+.queryBuilder-branches .ruleGroup .ruleGroup::before {
+    top: -0.5rem;
+    height: calc(50% + 0.5rem);
+    border-width: 0 0 1px 1px
+}
+
+.queryBuilder-branches .rule::after,
+.queryBuilder-branches .ruleGroup .ruleGroup::after {
+    top: 50%;
+    height: 50%;
+    border-width: 0 0 0 1px
+}
+
+.queryBuilder-branches .rule:last-child::after,
+.queryBuilder-branches .ruleGroup .ruleGroup:last-child::after {
+    display: none
+}
+
+.queryBuilder-branches .ruleGroup .ruleGroup::before,
+.queryBuilder-branches .ruleGroup .ruleGroup::after {
+    left: calc(-0.5rem - 1px - 1px)
+}
+
+.queryBuilder-branches .ruleGroup .ruleGroup::before {
+    top: calc(-0.5rem - 1px);
+    height: calc(50% + 0.5rem + 1px)
+}
+
+.queryBuilder-branches .ruleGroup .ruleGroup::after {
+    height: calc(50% + 1px)
+}
+
+.queryBuilder-branches .betweenRules {
+    position: relative
+}
+
+.queryBuilder-branches .betweenRules::before {
+    content: "";
+    width: .5rem;
+    left: calc(-0.5rem - 1px);
+    border-radius: 0;
+    position: absolute;
+    top: -0.5rem;
+    height: calc(100% + 0.5rem);
+    border-width: 0 0 0 1px
+}
+
+.ruleGroup {
+    border-color: #8081a2;
+    border-style: solid;
+    border-radius: .25rem;
+    background: rgba(242, 242, 242,0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ruleGroup:nth-child(1) {
+    background: var(--background-color-1);
+}
+
+.ruleGroup .ruleGroup:nth-child(1) {
+    background: var(--background-color-2);
+}
+
+.ruleGroup .ruleGroup .ruleGroup:nth-child(1) {
+    background: var(--background-color-3);
+}
+
+.ruleGroup .ruleGroup .ruleGroup .ruleGroup:nth-child(1) {
+    background: var(--background-color-4);
+}
+
+.ruleGroup .ruleGroup .ruleGroup .ruleGroup .ruleGroup:nth-child(1) {
+    background: var(--background-color-5);
+}
+
+.ruleGroup .shiftActions>* {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+.dndOver.rule,
+.dndOver.ruleGroup-header {
+    border-bottom-width: 2px;
+    border-bottom-style: dashed;
+    border-bottom-color: #639
+}
+
+.dndOver.rule.dndCopy,
+.dndOver.ruleGroup-header.dndCopy {
+    border-bottom-color: #693
+}
+
+.dndOver.betweenRules {
+    border-top-width: 2px;
+    border-top-style: dashed;
+    border-top-color: #639
+}
+
+.dndOver.betweenRules.dndCopy {
+    border-top-color: #693
+}
+
+.ruleGroup.dndDragging,
+.rule.dndDragging {
+    opacity: .5
+}
+
+.ruleGroup .queryBuilder-dragHandle,
+.rule .queryBuilder-dragHandle {
+    cursor: move
+}
+
+.queryBuilder-branches .rule::before,
+.queryBuilder-branches .rule::after,
+.queryBuilder-branches .ruleGroup .ruleGroup::before,
+.queryBuilder-branches .ruleGroup .ruleGroup::after {
+    border-color: purple;
+    border-style: solid
+}
+
+.queryBuilder-branches .rule:last-child::before,
+.queryBuilder-branches .ruleGroup .ruleGroup:last-child::before {
+    border-bottom-left-radius: .25rem
+}
+
+.queryBuilder-branches .betweenRules {
+    position: relative
+}
+
+.queryBuilder-branches .betweenRules::before {
+    border-color: #8081a2;
+    border-style: solid
+}

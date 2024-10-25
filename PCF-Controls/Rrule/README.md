@@ -13,7 +13,18 @@ https://github.com/jkbrzt/rrule
 | ----------- | ------------ | ----------------- | ------- |
 | ✅           | ✅            | ⬜                 | ⬜       |
 
-## Properties
+## Project artifacts
+
+This project contains the following artifacts:
+
+| Artifacts | Relative Folder location | Description |
+| -------- | -------------- | ---------- |
+| RruleControl | ./RruleControl | The pcfproj for the actual PCF control  |
+| RruleSolution | ./RruleCSolution | Solution containing the PCF control for deployment  |
+| DemoSolution | ./DemoSolution | A sample Canvas app solution that demonstrates the use of the Rrule PCF control |
+| RrulePackage | ./RrulePackage | A package deployment project that enables easier deployment of both the DemoSolution and RruleSolution in one deployment but still keeping as individual solutions. |
+
+## Control Properties
 
 ### Input Properties
 
