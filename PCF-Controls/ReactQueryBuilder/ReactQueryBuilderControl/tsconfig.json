@@ -1,0 +1,26 @@
+{
+    "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
+    "compilerOptions": {
+        "typeRoots": ["node_modules/@types"],
+        "esModuleInterop": true,
+        "module": "ES2015",
+        "target": "es5",
+        "jsx": "react",
+        "jsxFactory": "React.createElement",
+        "lib": ["dom","es2015"],
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "paths": {
+            "*": ["node_modules/*", "src/types/*"]
+        },
+        "moduleResolution": "node",
+        "isolatedModules": true
+
+    }
+}
+
+
+
+
+   

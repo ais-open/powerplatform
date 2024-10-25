@@ -1,0 +1,13 @@
+{
+  "combinator": "and",
+  "rules": [
+    {
+      "id": "038c1123-5153-4790-b1ed-261130ffab09",
+      "field": "firstName",
+      "operator": "=",
+      "valueSource": "value",
+      "value": "Ted"
+    }
+  ],
+  "id": "5638bb76-691d-42e3-97fa-59bb905a1886"
+}
