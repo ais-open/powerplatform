@@ -1,0 +1,56 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24113.218" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.24113.00218">
+  <Entities></Entities>
+  <Roles></Roles>
+  <Workflows></Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls>
+    <CustomControl>
+      <Name>ais_ais.reactquerybuilder</Name>
+      <FileName>/Controls/ais_ais.reactquerybuilder/ControlManifest.xml</FileName>
+    </CustomControl>
+  </CustomControls>
+  <EntityDataProviders />
+  <CanvasApps>
+    <CanvasApp>
+      <Name>new_aisreactquerybuilderpcf_973fb</Name>
+      <AppVersion>2025-01-13T20:05:04Z</AppVersion>
+      <Status>Ready</Status>
+      <CreatedByClientVersion>3.24122.12.0</CreatedByClientVersion>
+      <MinClientVersion>3.24122.12.0</MinClientVersion>
+      <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24122.12","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20250108T215737Z-3.24122.12.0"}</Tags>
+      <IsCdsUpgraded>0</IsCdsUpgraded>
+      <GalleryItemId xsi:nil="true"></GalleryItemId>
+      <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+      <DisplayName>AIS-Reactquerybuilder-PCF</DisplayName>
+      <Description>App to incorporate react query builder custom control</Description>
+      <CommitMessage>Save app with description provided in publish dialog.</CommitMessage>
+      <Publisher xsi:nil="true"></Publisher>
+      <AuthorizationReferences>[]</AuthorizationReferences>
+      <ConnectionReferences>{}</ConnectionReferences>
+      <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"Accounts":{"entitySetName":"accounts","logicalName":"account"}},"components":[{"componentName":"CustomControl","identifier":"ais_ais.reactquerybuilder","identifierType":"LogicalName"}]}}</DatabaseReferences>
+      <AppComponents>[]</AppComponents>
+      <AppComponentDependencies>[]</AppComponentDependencies>
+      <CanConsumeAppPass>0</CanConsumeAppPass>
+      <CanvasAppType>0</CanvasAppType>
+      <BypassConsent>0</BypassConsent>
+      <AdminControlBypassConsent>0</AdminControlBypassConsent>
+      <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <CdsDependencies>{"cdsdependencies":[{"logicalname":"account","componenttype":1},{"dependencyid":"","logicalname":"ais_ais.reactquerybuilder","componenttype":66,"componenttypeplatformname":"CustomControl"}]}</CdsDependencies>
+      <IsCustomizable>1</IsCustomizable>
+      <BackgroundImageUri>/CanvasApps/new_aisreactquerybuilderpcf_973fb_BackgroundImageUri</BackgroundImageUri>
+      <DocumentUri>/CanvasApps/new_aisreactquerybuilderpcf_973fb_DocumentUri.msapp</DocumentUri>
+      <AdditionalUris>
+        <AdditionalUri>/CanvasApps/new_aisreactquerybuilderpcf_973fb_AdditionalUris0_identity.json</AdditionalUri>
+      </AdditionalUris>
+    </CanvasApp>
+  </CanvasApps>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>
