@@ -7,7 +7,6 @@ import { AppProps } from "./QueryBuilderComponent";
 import { defaultValueProcessorByRule, Field, formatQuery, RuleGroupType, ValueProcessorByRule } from 'react-querybuilder';
 import { getFieldsFromItemsDataset } from "./DatasetMapping";
 import { format } from 'sql-formatter';
-import { createRoot, Root } from 'react-dom/client';
 
 
 export class reactquerybuilder implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -17,8 +16,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
     private items: Field[];
     private stringFields: Field[];
     private query: RuleGroupType;
-    private initialQuery?: RuleGroupType;
-    private root: Root;
+    private initialQuery: RuleGroupType;
 
     constructor() {
 
@@ -36,11 +34,9 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         // Add control initialization code
         this.notifyOutputChanged = notifyOutputChanged;
         this.container = container;
-        const dataset = context.parameters.items;
-        this.root = createRoot(this.container);
-        
+        // const dataset = context.parameters.items;
         //const initialQueryRaw = context.parameters.initialQuery;
-        //this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
+        // this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
     }
 
     /**
@@ -52,30 +48,24 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         const dataset = context.parameters.items;
         this.items = getFieldsFromItemsDataset(dataset);
         this.stringFields = this.items.filter(a => a.inputType == "text");
-        const initialQueryRaw = context.parameters.initialQuery.raw;
-        //this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
-
-        try {
-            this.initialQuery = initialQueryRaw ? JSON.parse(initialQueryRaw) : undefined;
-        } catch (error) {
-            this.initialQuery = undefined;
-        }
-        
+        const initialQueryRaw = context.parameters.initialQuery;
+        this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
 
         this.appProps = {
             fields: this.items,
             onQueryChange: this.handleQueryChange.bind(this),
             initialQuery: this.initialQuery,
             isReadOnly: context.parameters.isreadonly.raw == true,
-            reset: false//context.parameters.reset.raw == true
+            reset: context.parameters.reset.raw == true
         }
-        
-        //ReactDOM.render(React.createElement(QueryBuilderComponent, this.appProps), this.container);
-        this.root.render(React.createElement(QueryBuilderComponent, this.appProps));
+        if (this.appProps.reset)
+            ReactDOM.unmountComponentAtNode(this.container);
+        ReactDOM.render(React.createElement(QueryBuilderComponent, this.appProps), this.container);
         this.notifyOutputChanged();
     }
     private handleQueryChange(queryOutput: RuleGroupType): void {
         this.query = queryOutput;
+        // this.notifyOutputChanged();
     }
 
     getQuoteString = (input: string): string => {
@@ -92,18 +82,6 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      * It is called by the framework prior to a control receiving new data.
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
      */
- /*   public getOutputs(): IOutputs {
-        
-
-        return {
-            //queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: true }) : '',
-            queryjson: this.query ? formatQuery(this.query, { format: 'json' }) : '',
-            querysql: this.query ? formatQuery(this.query, { format: 'sql'}) : ''
-            
-           
-        };
-    }*/
-    
     public getOutputs(): IOutputs {
         const customValueProcessor: ValueProcessorByRule = (rule, options) => {
             //console.log(rule);
@@ -118,14 +96,12 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
 
                 if (columnIndex >= 0) {
                     const str = rule.value;
-                    if (rule.value != undefined && rule.value.toString().trim() != '') 
-                        {
-                        if(rule.operator === "in" || rule.operator === "notIn")
-                        {
+                    if (rule.value != undefined && rule.value.toString().trim() != '') {
+                        if (rule.operator === "in" || rule.operator === "notIn") {
                             const quoteString = this.getQuoteString(str)
                             return quoteString;
                         }
-                        else return "'"+str+"'";
+                        else return "'" + str + "'";
                     }
                 }
             }
@@ -133,10 +109,8 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         };
 
         const sqlQuery = this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true, valueProcessor: customValueProcessor }) : '';
-
         return {
-            //queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: true }) : '',
-            queryjson: this.query ? formatQuery(this.query, { format: 'json' }) : '',
+            queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: false  }) : '',
             querysql: sqlQuery,//this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true,valueProcessor: customValueProcessor  }) : '',
             formattedsqlquery: format(sqlQuery, {
                 language: 'sql',
@@ -146,7 +120,6 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
             })
         };
     }
-        
 
     /**
      * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
@@ -154,7 +127,6 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      */
     public destroy(): void {
         // Add code to cleanup control if necessary
-        //ReactDOM.unmountComponentAtNode(this.container);
-        this.root.unmount();
+        ReactDOM.unmountComponentAtNode(this.container);
     }
 }
