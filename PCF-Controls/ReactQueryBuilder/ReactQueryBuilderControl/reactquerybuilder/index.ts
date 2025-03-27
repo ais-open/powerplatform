@@ -1,6 +1,7 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { createRoot, Root } from 'react-dom/client';
 import { QueryBuilderComponent } from "./QueryBuilderComponent";
 import './css/query-builder.css';
 import { AppProps } from "./QueryBuilderComponent";
@@ -17,6 +18,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
     private stringFields: Field[];
     private query: RuleGroupType;
     private initialQuery: RuleGroupType;
+    private root: Root;
 
     constructor() {
 
@@ -34,9 +36,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         // Add control initialization code
         this.notifyOutputChanged = notifyOutputChanged;
         this.container = container;
-        // const dataset = context.parameters.items;
-        //const initialQueryRaw = context.parameters.initialQuery;
-        // this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
+        this.root = createRoot(this.container);
     }
 
     /**
@@ -58,14 +58,14 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
             isReadOnly: context.parameters.isreadonly.raw == true,
             reset: context.parameters.reset.raw == true
         }
-        if (this.appProps.reset)
-            ReactDOM.unmountComponentAtNode(this.container);
-        ReactDOM.render(React.createElement(QueryBuilderComponent, this.appProps), this.container);
+
+        this.root.render(
+            React.createElement(QueryBuilderComponent, this.appProps));
         this.notifyOutputChanged();
     }
     private handleQueryChange(queryOutput: RuleGroupType): void {
         this.query = queryOutput;
-        // this.notifyOutputChanged();
+        this.notifyOutputChanged();
     }
 
     getQuoteString = (input: string): string => {
@@ -110,7 +110,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
 
         const sqlQuery = this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true, valueProcessor: customValueProcessor }) : '';
         return {
-            queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: false  }) : '',
+            queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: false }) : '',
             querysql: sqlQuery,//this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true,valueProcessor: customValueProcessor  }) : '',
             formattedsqlquery: format(sqlQuery, {
                 language: 'sql',
@@ -126,7 +126,9 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      * i.e. cancelling any pending remote calls, removing listeners, etc.
      */
     public destroy(): void {
-        // Add code to cleanup control if necessary
-        ReactDOM.unmountComponentAtNode(this.container);
+        // Use the root.unmount() method for modern React 18 cleanup
+        if (this.root) {
+            this.root.unmount();
+        }
     }
 }
