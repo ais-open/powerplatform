@@ -66,7 +66,12 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         this.notifyOutputChanged();
     }
 
-    getQuoteString = (input: string): string => {
+    /**
+     * Formats a comma-separated string into a SQL IN clause format with proper quotes
+     * @param input A comma-separated string of values
+     * @returns A properly formatted string for SQL IN clauses with parentheses and quotes
+     */
+    private getQuoteString(input: string): string {
         // Split the input string by commas
         const items = input.split(',');
 
@@ -75,7 +80,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
 
         // Join the quoted items back into a single string separated by commas
         return "(" + quotedItems.join(',') + ")";
-    };
+    }
 
     private getCustomValueProcessor(): ValueProcessorByRule {
         return (rule, options) => {
