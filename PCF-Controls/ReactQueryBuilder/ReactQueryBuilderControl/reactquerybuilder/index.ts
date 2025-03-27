@@ -82,28 +82,50 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         return "(" + quotedItems.join(',') + ")";
     }
 
+    /**
+     * Creates a custom value processor for SQL query formatting
+     * @returns A ValueProcessorByRule function that properly formats string values in SQL queries
+     */
     private getCustomValueProcessor(): ValueProcessorByRule {
         return (rule, options) => {
-            if (rule.operator === "in" ||
-                rule.operator === "notIn" ||
-                rule.operator === "=" ||
-                rule.operator === "!="
-            ) {
-                const columnIndex = this.stringFields.findIndex(a => a.name === rule.field);
-
-                if (columnIndex >= 0) {
-                    const str = rule.value;
-                    if (rule.value != undefined && rule.value.toString().trim() != '') {
-                        if (rule.operator === "in" || rule.operator === "notIn") {
-                            const quoteString = this.getQuoteString(str)
-                            return quoteString;
-                        }
-                        else return "'" + str + "'";
-                    }
+            // Only process specific operators that need string handling
+            const stringOperators = ["in", "notIn", "=", "!="];
+            
+            if (stringOperators.includes(rule.operator) && 
+                this.isStringField(rule.field) && 
+                this.hasValue(rule.value)) {
+                
+                const value = rule.value.toString();
+                
+                // Handle IN/NOT IN operators differently from equals operators
+                if (rule.operator === "in" || rule.operator === "notIn") {
+                    return this.getQuoteString(value);
+                } else {
+                    return `'${value}'`;
                 }
             }
+            
+            // Fall back to default processor for all other cases
             return defaultValueProcessorByRule(rule, options);
         };
+    }
+    
+    /**
+     * Checks if a field is a string field
+     * @param fieldName Name of the field to check
+     * @returns True if the field is a string field, false otherwise
+     */
+    private isStringField(fieldName: string): boolean {
+        return this.stringFields.some(field => field.name === fieldName);
+    }
+    
+    /**
+     * Checks if a value exists and is not empty
+     * @param value The value to check
+     * @returns True if the value exists and is not an empty string
+     */
+    private hasValue(value: any): boolean {
+        return value !== undefined && value.toString().trim() !== '';
     }
 
     /**
