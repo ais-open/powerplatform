@@ -5,7 +5,6 @@
     </external-service-usage>
     <!-- Inputs -->
     <property name="initialQuery" display-name-key="Initial Query" description-key="The initial query in JSON format" of-type="SingleLine.Text" usage="bound" required="false" />
-    <property name="fields" display-name-key="Fields" description-key="The fields configuration in JSON format" of-type="SingleLine.Text" usage="bound" required="false" />
     <property name="isreadonly" display-name-key="IsReadOnly" description-key="Whether the control is to be readonly" of-type="TwoOptions" usage="bound" required="false" />
     <!-- Outputs -->
     <property name="queryjson" display-name-key="Query JSON" description-key="The query in JSON format" of-type="SingleLine.Text" usage="output" required="false" />
