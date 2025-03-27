@@ -1,6 +1,5 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { createRoot, Root } from 'react-dom/client';
 import { QueryBuilderComponent } from "./QueryBuilderComponent";
 import './css/query-builder.css';
@@ -33,7 +32,6 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      * @param container If a control is marked control-type='standard', it will receive an empty div element within which it can render its content.
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container: HTMLDivElement): void {
-        // Add control initialization code
         this.notifyOutputChanged = notifyOutputChanged;
         this.container = container;
         this.root = createRoot(this.container);
@@ -78,15 +76,9 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         // Join the quoted items back into a single string separated by commas
         return "(" + quotedItems.join(',') + ")";
     };
-    /**
-     * It is called by the framework prior to a control receiving new data.
-     * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
-     */
-    public getOutputs(): IOutputs {
-        const customValueProcessor: ValueProcessorByRule = (rule, options) => {
-            //console.log(rule);
-            //
-            //console.log("Ope " + rule.operator);
+
+    private getCustomValueProcessor(): ValueProcessorByRule {
+        return (rule, options) => {
             if (rule.operator === "in" ||
                 rule.operator === "notIn" ||
                 rule.operator === "=" ||
@@ -107,11 +99,24 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
             }
             return defaultValueProcessorByRule(rule, options);
         };
+    }
 
-        const sqlQuery = this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true, valueProcessor: customValueProcessor }) : '';
+    /**
+     * It is called by the framework prior to a control receiving new data.
+     * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
+     */
+    public getOutputs(): IOutputs {
+        const customValueProcessor = this.getCustomValueProcessor();
+        
+        const sqlQuery = this.query ? formatQuery(this.query, { 
+            format: 'sql', 
+            parseNumbers: true, 
+            valueProcessor: customValueProcessor 
+        }) : '';
+        
         return {
             queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: false }) : '',
-            querysql: sqlQuery,//this.query ? formatQuery(this.query, { format: 'sql', parseNumbers: true,valueProcessor: customValueProcessor  }) : '',
+            querysql: sqlQuery,
             formattedsqlquery: format(sqlQuery, {
                 language: 'sql',
                 tabWidth: 2, keywordCase: 'preserve', dataTypeCase: 'preserve',
@@ -126,7 +131,6 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      * i.e. cancelling any pending remote calls, removing listeners, etc.
      */
     public destroy(): void {
-        // Use the root.unmount() method for modern React 18 cleanup
         if (this.root) {
             this.root.unmount();
         }
