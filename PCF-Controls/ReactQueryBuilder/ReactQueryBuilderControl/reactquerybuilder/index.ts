@@ -106,23 +106,41 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
      */
     public getOutputs(): IOutputs {
-        const customValueProcessor = this.getCustomValueProcessor();
+        // If there's no query, return empty strings for all outputs
+        if (!this.query) {
+            return {
+                queryjson: '',
+                querysql: '',
+                formattedsqlquery: ''
+            };
+        }
+
+        // Get the JSON formatted query
+        const queryJson = formatQuery(this.query, { format: 'json', parseNumbers: false });
         
-        const sqlQuery = this.query ? formatQuery(this.query, { 
+        // Get the SQL query with custom value processor
+        const sqlQuery = formatQuery(this.query, { 
             format: 'sql', 
             parseNumbers: true, 
-            valueProcessor: customValueProcessor 
-        }) : '';
+            valueProcessor: this.getCustomValueProcessor() 
+        });
+        
+        // Format the SQL query for readability
+        const formattedSqlQuery = format(sqlQuery, {
+            language: 'sql',
+            tabWidth: 2, 
+            keywordCase: 'preserve', 
+            dataTypeCase: 'preserve',
+            functionCase: 'preserve', 
+            identifierCase: 'preserve', 
+            indentStyle: 'standard',
+            logicalOperatorNewline: 'before'
+        });
         
         return {
-            queryjson: this.query ? formatQuery(this.query, { format: 'json', parseNumbers: false }) : '',
+            queryjson: queryJson,
             querysql: sqlQuery,
-            formattedsqlquery: format(sqlQuery, {
-                language: 'sql',
-                tabWidth: 2, keywordCase: 'preserve', dataTypeCase: 'preserve',
-                functionCase: 'preserve', identifierCase: 'preserve', indentStyle: 'standard',
-                logicalOperatorNewline: 'before'
-            })
+            formattedsqlquery: formattedSqlQuery
         };
     }
 
