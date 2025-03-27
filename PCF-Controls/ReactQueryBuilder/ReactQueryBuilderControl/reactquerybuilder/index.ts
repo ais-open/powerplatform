@@ -7,8 +7,6 @@ import { AppProps } from "./QueryBuilderComponent";
 import { defaultValueProcessorByRule, Field, formatQuery, RuleGroupType, ValueProcessorByRule } from 'react-querybuilder';
 import { getFieldsFromItemsDataset } from "./DatasetMapping";
 import { format } from 'sql-formatter';
-//import { createElement } from "react";
-
 
 export class reactquerybuilder implements ComponentFramework.StandardControl<IInputs, IOutputs> {
     private notifyOutputChanged: () => void;
