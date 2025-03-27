@@ -13,10 +13,11 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
     private notifyOutputChanged: () => void;
     private container: HTMLDivElement;
     private appProps: AppProps;
-    private items: Field[];
-    private stringFields: Field[];
-    private query: RuleGroupType;
-    private initialQuery: RuleGroupType;
+    private items: Field[] = [];
+    private stringFields: Field[] = [];
+    private query: RuleGroupType | null = null;
+    private initialQuery: RuleGroupType | null = null;
+    private previousInitialQueryRaw: string | null = null;
     private root: Root;
 
     constructor() {
@@ -45,22 +46,35 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
         // Add code to update control view
         const dataset = context.parameters.items;
         this.items = getFieldsFromItemsDataset(dataset);
-        this.stringFields = this.items.filter(a => a.inputType == "text");
-        const initialQueryRaw = context.parameters.initialQuery;
-        this.initialQuery = initialQueryRaw && initialQueryRaw.raw ? JSON.parse(initialQueryRaw.raw) : null;
+        this.stringFields = this.items.filter(a => a.inputType === "text");
+        
+        // Check if initialQuery has changed
+        const initialQueryRaw = context.parameters.initialQuery?.raw || null;
+        const initialQueryChanged = initialQueryRaw !== this.previousInitialQueryRaw;
+        this.previousInitialQueryRaw = initialQueryRaw;
+        
+        // Parse initialQuery safely
+        try {
+            this.initialQuery = initialQueryRaw ? JSON.parse(initialQueryRaw) : null;
+        } catch (error) {
+            console.error("Failed to parse initialQuery JSON:", error);
+            this.initialQuery = null;
+        }
 
         this.appProps = {
             fields: this.items,
             onQueryChange: this.handleQueryChange.bind(this),
             initialQuery: this.initialQuery,
-            isReadOnly: context.parameters.isreadonly.raw == true,
-            reset: context.parameters.reset.raw == true
+            initialQueryChanged: initialQueryChanged,
+            isReadOnly: context.parameters.isreadonly.raw === true,
+            reset: context.parameters.reset.raw === true
         }
 
         this.root.render(
             React.createElement(QueryBuilderComponent, this.appProps));
         this.notifyOutputChanged();
     }
+    
     private handleQueryChange(queryOutput: RuleGroupType): void {
         this.query = queryOutput;
         this.notifyOutputChanged();
