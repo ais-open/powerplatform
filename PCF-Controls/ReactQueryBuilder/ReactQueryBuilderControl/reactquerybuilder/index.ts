@@ -66,8 +66,7 @@ export class reactquerybuilder implements ComponentFramework.StandardControl<IIn
             onQueryChange: this.handleQueryChange.bind(this),
             initialQuery: this.initialQuery,
             initialQueryChanged: initialQueryChanged,
-            isReadOnly: context.parameters.isreadonly.raw === true,
-            reset: context.parameters.reset.raw === true
+            isReadOnly: context.parameters.isreadonly.raw === true
         }
 
         this.root.render(

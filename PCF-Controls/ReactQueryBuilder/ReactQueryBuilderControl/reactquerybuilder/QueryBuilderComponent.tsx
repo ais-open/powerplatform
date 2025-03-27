@@ -13,7 +13,6 @@ export interface AppProps {
   initialQuery?: any;
   initialQueryChanged?: boolean;
   isReadOnly: boolean;
-  reset: boolean;
 }
 
 const initialQueryDefault: RuleGroupType = {
@@ -26,16 +25,11 @@ export const QueryBuilderComponent: React.FC<AppProps> = ({
   onQueryChange, 
   initialQuery, 
   initialQueryChanged,
-  isReadOnly, 
-  reset 
+  isReadOnly
 }) => {
   // Parse initial query safely
   const parseInitialQuery = React.useCallback(() => {
     if (!initialQuery) {
-      return initialQueryDefault;
-    }
-
-    if (reset) {
       return initialQueryDefault;
     }
 
@@ -51,18 +45,18 @@ export const QueryBuilderComponent: React.FC<AppProps> = ({
       console.error("Failed to parse initialQuery:", error);
       return initialQueryDefault;
     }
-  }, [initialQuery, reset]);
+  }, [initialQuery]);
 
   // Set up query state with the parsed initial query
   const [query, setQuery] = useState(parseInitialQuery());
   
   // Update query when initialQuery changes (detected by initialQueryChanged flag)
   useEffect(() => {
-    if (initialQueryChanged || reset) {
-      console.log("Query reset due to initialQuery change or reset flag");
+    if (initialQueryChanged) {
+      console.log("Query reset due to initialQuery change");
       setQuery(parseInitialQuery());
     }
-  }, [initialQueryChanged, reset, parseInitialQuery]);
+  }, [initialQueryChanged, parseInitialQuery]);
 
   // Notify parent of query changes
   useEffect(() => {
