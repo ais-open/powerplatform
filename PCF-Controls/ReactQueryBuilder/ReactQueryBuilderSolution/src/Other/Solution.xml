@@ -2,32 +2,32 @@
 <ImportExportXml version="9.1.0.643" SolutionPackageVersion="9.1" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <!-- Unique Name of Cds Solution-->
-    <UniqueName>attcustomcontrols</UniqueName>
+    <UniqueName>ReactQueryBuilderPCF</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="ATT Custom Controls" languagecode="1033" />
+      <LocalizedName description="ReactQueryBuilderPCF" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>2.12</Version>
+    <Version>1.0.0.1</Version>
     <!-- Solution Package Type: Unmanaged(0)/Managed(1)/Both(2)-->
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
-      <UniqueName>WillisTowersWatson</UniqueName>
+      <UniqueName>appliedinformationsciences</UniqueName>
       <LocalizedNames>
         <!-- Localized Cds Publisher Name in language code-->
-        <LocalizedName description="WillisTowersWatson" languagecode="1033" />
+        <LocalizedName description="appliedinformationsciences" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
-        <Description description="WillisTowersWatson" languagecode="1033" />
+        <Description description="appliedinformationsciences" languagecode="1033" />
       </Descriptions>
       <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
-      <CustomizationPrefix>att</CustomizationPrefix>
+      <CustomizationPrefix>ais</CustomizationPrefix>
       <!-- Derived Option Value Prefix for the Customization Prefix of Cds Publisher -->
-      <CustomizationOptionValuePrefix>80466</CustomizationOptionValuePrefix>
+      <CustomizationOptionValuePrefix>38026</CustomizationOptionValuePrefix>
       <Addresses>
         <!-- Address of the Publisher-->
         <Address>

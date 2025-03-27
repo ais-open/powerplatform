@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="ais" constructor="reactquerybuilder" version="0.0.34" display-name-key="reactquerybuilder" description-key="reactquerybuilder description" control-type="standard">
+  <control namespace="ais" constructor="reactquerybuilder" version="0.0.35" display-name-key="reactquerybuilder" description-key="reactquerybuilder description" control-type="standard">
     <external-service-usage enabled="false">
     </external-service-usage>
     <!-- Inputs -->

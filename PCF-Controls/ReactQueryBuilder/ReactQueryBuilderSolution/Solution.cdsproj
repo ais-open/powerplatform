@@ -49,7 +49,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\ReactQueryBuilderV2.pcfproj" />
+    <ProjectReference Include="..\ReactQueryBuilderControl\ReactQueryBuilderV2.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
