@@ -1,0 +1,112 @@
+{
+  "folders": [
+    {
+      "name": "Root",
+      "path": "."
+    },
+    {
+      "name": "PCF Controls",
+      "path": "./PCF-Controls"
+    },
+    {
+      "name": "LookupToCombobox Control",
+      "path": "./PCF-Controls/LookupToCombobox/LookupToComboboxControl"
+    },
+    {
+      "name": "LookupToDropdown Control", 
+      "path": "./PCF-Controls/LookupToDropdown/LookupToDropdownControl"
+    },
+    {
+      "name": "ReactQueryBuilder Control",
+      "path": "./PCF-Controls/ReactQueryBuilder/ReactQueryBuilderControl"
+    },
+    {
+      "name": "Rrule Control",
+      "path": "./PCF-Controls/Rrule/RruleControl"
+    },
+    {
+      "name": "Plugins",
+      "path": "./Plugins"
+    }
+  ],
+  "settings": {
+    "github.copilot.enable": {
+      "*": true,
+      "plaintext": true,
+      "markdown": true,
+      "typescript": true,
+      "javascript": true,
+      "typescriptreact": true,
+      "javascriptreact": true,
+      "csharp": true,
+      "json": true,
+      "jsonc": true,
+      "xml": true,
+      "yaml": true
+    },
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "npm.packageManager": "npm",
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/obj/**": true,
+      "**/bin/**": true,
+      "**/generated/**": true
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build All PCF Controls",
+        "type": "shell",
+        "command": "npm",
+        "args": ["run", "build"],
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "options": {
+          "cwd": "${workspaceFolder}/PCF-Controls"
+        },
+        "problemMatcher": ["$tsc"]
+      },
+      {
+        "label": "Lint All PCF Controls",
+        "type": "shell", 
+        "command": "npm",
+        "args": ["run", "lint"],
+        "group": "test",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "options": {
+          "cwd": "${workspaceFolder}/PCF-Controls"
+        },
+        "problemMatcher": ["$eslint-stylish"]
+      }
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug PCF Control",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/node_modules/.bin/pcf-scripts",
+        "args": ["start", "watch"],
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "NODE_ENV": "development"
+        }
+      }
+    ]
+  }
+}

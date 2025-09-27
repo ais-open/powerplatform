@@ -1,1 +1,35 @@
 PCF-Controls/ReactQueryBuilder/ReactQueryBuilderControl/node_modules/.bin/acorn
+
+# VS Code specific files (keep .vscode/settings.json and .vscode/extensions.json for team collaboration)
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+**/obj/
+**/bin/
+**/out/
+**/generated/
+**/node_modules/
+**/*.dll
+**/*.pdb
+**/*.exe
+
+# Package manager files
+package-lock.json
+yarn.lock
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/

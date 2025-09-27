@@ -1,0 +1,43 @@
+{
+  "recommendations": [
+    // GitHub Copilot Extensions
+    "github.copilot",
+    "github.copilot-chat",
+    
+    // Power Platform Development
+    "microsoft-isvexptools.powerplatform-vscode",
+    "crmtech.crmwebresources",
+    
+    // TypeScript/JavaScript Development
+    "ms-vscode.vscode-typescript-next",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    
+    // React Development (for PCF controls)
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+    
+    // C# Development (for Plugins)
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    
+    // General Development Tools
+    "visualstudioexptteam.vscodeintellicode",
+    "ms-vscode.powershell",
+    "redhat.vscode-xml",
+    "ms-vscode.vscode-yaml",
+    
+    // Git Integration
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    
+    // Productivity
+    "streetsidesoftware.code-spell-checker",
+    "ms-vscode.vscode-todo-highlight",
+    "gruntfuggly.todo-tree"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript",
+    "hookyqr.beautify"
+  ]
+}
