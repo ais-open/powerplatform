@@ -18,13 +18,11 @@
   "editor.inlineSuggest.enabled": true,
   "editor.inlineSuggest.showToolbar": "always",
   "github.copilot.editor.iterativeFixing": true,
-  
   // Power Platform specific settings
   "typescript.preferences.noSemicolons": "off",
   "typescript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "relative",
-  
   // ESLint configuration for PCF controls
   "eslint.enable": true,
   "eslint.validate": [
@@ -35,11 +33,10 @@
   ],
   "eslint.workingDirectories": [
     "PCF-Controls/LookupToCombobox/LookupToComboboxControl",
-    "PCF-Controls/LookupToDropdown/LookupToDropdownControl", 
+    "PCF-Controls/LookupToDropdown/LookupToDropdownControl",
     "PCF-Controls/ReactQueryBuilder/ReactQueryBuilderControl",
     "PCF-Controls/Rrule/RruleControl"
   ],
-  
   // File associations for Power Platform
   "files.associations": {
     "*.pcfproj": "xml",
@@ -49,47 +46,44 @@
     "*.resx": "xml",
     "*.webresource": "xml"
   },
-  
   // Exclude patterns for better performance
   "files.exclude": {
     "**/node_modules": true,
-    "**/obj": true,
-    "**/bin": true,
+    // "**/obj": true,
+    // "**/bin": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/generated": true,
-    "**/out": true
+    // "**/generated": true,
+    "**/out": true,
+    // Explicitly show the ReactQueryBuilder solution and control outputs
+    // "PCF-Controls/ReactQueryBuilder/ReactQueryBuilderSolution/bin": false,
+    // "PCF-Controls/ReactQueryBuilder/ReactQueryBuilderControl/out": false
   },
-  
   "search.exclude": {
     "**/node_modules": true,
-    "**/obj": true,
-    "**/bin": true,
+    //"**/obj": true,
+    // "**/bin": true,
     "**/generated": true,
-    "**/out": true,
-    "**/*.dll": true,
+    //"**/out": true,
+    // "**/*.dll": true,
     "**/*.pdb": true,
     "**/package-lock.json": true
   },
-  
   // Code formatting
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  
   // IntelliSense and suggestions
   "typescript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  
   // Terminal settings for Power Platform CLI
   "terminal.integrated.cwd": "${workspaceFolder}",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  
   // Git settings
   "git.autofetch": true,
   "git.confirmSync": false,
