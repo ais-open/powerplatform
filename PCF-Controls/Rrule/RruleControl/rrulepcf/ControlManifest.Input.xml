@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest>
-  <control namespace="ais" constructor="rrulepcf" version="1.1.24" display-name-key="rRule" description-key="Generates recurring dates" control-type="standard">
+  <control namespace="ais" constructor="rrulepcf" version="1.1.25" display-name-key="rRule" description-key="Generates recurring dates" control-type="standard">
     <external-service-usage enabled="false">
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
