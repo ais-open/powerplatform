@@ -1,5 +1,4 @@
 import eslintjs from "@eslint/js";
-import microsoftPowerApps from "@microsoft/eslint-plugin-power-apps";
 import pluginPromise from "eslint-plugin-promise";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
@@ -13,12 +12,7 @@ export default [
   ...typescriptEslint.configs.recommended,
   ...typescriptEslint.configs.stylistic,
   pluginPromise.configs["flat/recommended"],
-  microsoftPowerApps.configs.paCheckerHosted,
   {
-    plugins: {
-      "@microsoft/power-apps": microsoftPowerApps,
-    },
-
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -35,7 +29,7 @@ export default [
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-empty-function": "off"
+      "@typescript-eslint/no-empty-function": "off",
     },
   },
 ];

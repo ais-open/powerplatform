@@ -13,25 +13,24 @@
     "refreshTypes": "pcf-scripts refreshTypes"
   },
   "dependencies": {
-    "@react-querybuilder/dnd": "^8.4.1",
+    "@react-querybuilder/dnd": "^8.14.3",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^18.3.1",
-    "react-querybuilder": "^8.4.1",
-    "sql-formatter": "^15.4.1"
+    "react-querybuilder": "^8.14.3",
+    "sql-formatter": "^15.7.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
-    "@microsoft/eslint-plugin-power-apps": "^0.3.7",
-    "@types/node": "^22.13.14",
+    "@types/node": "^25.5.0",
     "@types/powerapps-component-framework": "^1.3.18",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.23.0",
+    "css-loader": "^7.1.4",
+    "eslint": "^9.0.0",
     "eslint-plugin-promise": "^7.2.1",
     "globals": "^16.0.0",
     "pcf-scripts": "^1.51.1",
